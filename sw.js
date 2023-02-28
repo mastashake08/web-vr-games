@@ -1,6 +1,6 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "mastashake08-vr-games-offline-3";
+const CACHE = "mastashake08-vr-games-offline-7";
 const PRECACHE_ASSETS = [
     'https://jyroneparker.s3.amazonaws.com/assets/environment/evolution.mp3',
     'https://jyroneparker.s3.amazonaws.com/assets/environment/natural_bridge.glb',
@@ -16,22 +16,29 @@ self.addEventListener('install', event => {
     })());
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(async () => {
-      const cache = await caches.open(CACHE);
+self.addEventListener("fetch", (event) => {
+  console.log(`Handling fetch event for ${event.request.url}`);
 
-      // match the request to our cache
-      const cachedResponse = await cache.match(event.request);
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        console.log("Found response in cache:", response);
+        return response;
+      }
+      console.log("No response found in cache. About to fetch from network…");
 
-      // check if we got a valid response
-      if (cachedResponse !== undefined) {
-          // Cache hit, return the resource
-          return cachedResponse;
-      } else {
-        // Otherwise, go to the network
-          return fetch(event.request)
-      };
-  });
+      return fetch(event.request)
+        .then((response) => {
+          console.log("Response from network is:", response);
+
+          return response;
+        })
+        .catch((error) => {
+          console.error(`Fetching failed: ${error}`);
+          throw error;
+        });
+    })
+  );
 });
 
 self.addEventListener("message", (event) => {
