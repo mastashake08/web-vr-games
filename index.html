@@ -38,10 +38,10 @@
     <a-scene fog="type: linear; color: #AAA" loading-screen="dotsColor: red; backgroundColor: black">
       <a-assets>
         <audio id="bg-music" src="https://jyroneparker.s3.amazonaws.com/assets/environment/evolution.mp3" preload="auto" crossorigin="anonymous"></audio>
-        <a-asset-item id="mammoth" src="https://jyroneparker.s3.amazonaws.com/assets/environment/mammoth.glb"></a-asset-item>
-        <a-asset-item id="robot" src="https://jyroneparker.s3.amazonaws.com/assets/environment/robot.glb"></a-asset-item>
+        <!-- <a-asset-item id="mammoth" src="https://jyroneparker.s3.amazonaws.com/assets/environment/mammoth.glb"></a-asset-item> -->
+        <!-- <a-asset-item id="robot" src="https://jyroneparker.s3.amazonaws.com/assets/environment/robot.glb"></a-asset-item> -->
 
-        <a-asset-item id="cosmic-cell" src="https://jyroneparker.s3.amazonaws.com/assets/environment/cosmic_cell.glb"></a-asset-item>
+        <!-- <a-asset-item id="cosmic-cell" src="https://jyroneparker.s3.amazonaws.com/assets/environment/cosmic_cell.glb"></a-asset-item> -->
 
         <a-asset-item id="natural-bridge" src="https://jyroneparker.s3.amazonaws.com/assets/environment/natural_bridge.glb"></a-asset-item>
         <a-asset-item id="strange-star" src="https://jyroneparker.s3.amazonaws.com/assets/environment/stranger_star.glb"></a-asset-item>
@@ -49,7 +49,7 @@
       <a-entity move gltf-model="#strange-star" modify-materials position="1 200 -300 " scale="75 75 75"></a-entity>
       <!-- <a-entity move gltf-model="#cosmic-cell" modify-materials position="2 2 -5" scale="50 50 50"></a-entity> -->
 
-      <a-entity gltf-model="#robot" camera look-controls position="0 1.6 0" tracked-controls="controller: 0; idPrefix: OpenVR" wasd-controls navmesh-physics="#mountain" oculus-touch-controls x-button-listener></a-entity>
+      <a-entity  camera look-controls position="0 1.6 0" tracked-controls="controller: 0; idPrefix: OpenVR" wasd-controls navmesh-physics="#mountain" oculus-touch-controls x-button-listener></a-entity>
       <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box> -->
       <!-- <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere> -->
       <!-- <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
