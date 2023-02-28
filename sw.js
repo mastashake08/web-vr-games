@@ -1,6 +1,6 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "mastashake08-vr-games-offline-7";
+const CACHE = "mastashake08-vr-games-offline-8";
 const PRECACHE_ASSETS = [
     'https://jyroneparker.s3.amazonaws.com/assets/environment/evolution.mp3',
     'https://jyroneparker.s3.amazonaws.com/assets/environment/natural_bridge.glb',

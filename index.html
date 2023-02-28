@@ -10,6 +10,8 @@
       }
     </script>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/browse/aframe-mountain-component@0.3.3/dist/aframe-mountain-component.min.js"></script>
+   </head>
     <script>
     AFRAME.registerComponent('x-button-listener', {
       init: function () {
@@ -51,17 +53,21 @@
         <a-asset-item id="natural-bridge" src="https://jyroneparker.s3.amazonaws.com/assets/environment/natural_bridge.glb"></a-asset-item>
         <a-asset-item id="strange-star" src="https://jyroneparker.s3.amazonaws.com/assets/environment/stranger_star.glb"></a-asset-item>
       </a-assets>
-      <a-entity move gltf-model="#strange-star" modify-materials position="1 200 -300 " scale="75 75 75"></a-entity>
+      <a-entity id="star" move gltf-model="#strange-star" modify-materials position="1 200 -300 " scale="75 75 75"></a-entity>
       <!-- <a-entity move gltf-model="#cosmic-cell" modify-materials position="2 2 -5" scale="50 50 50"></a-entity> -->
+      <a-entity id="character">
+        <a-camera position="0 1.6 0"></a-camera>
+        <a-entity oculus-touch-controls="hand: left" x-button-listener></a-entity>
+        <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+      </a-entity>
 
-      <a-entity  camera look-controls position="0 1.6 0" tracked-controls="controller: 0; idPrefix: OpenVR" wasd-controls navmesh-physics="#mountain" oculus-touch-controls x-button-listener></a-entity>
       <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box> -->
       <!-- <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere> -->
       <!-- <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder> -->
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#7BC8A4"></a-plane> -->
-      <a-sky color="#000"></a-sky>
-      <a-entity gltf-model="#natural-bridge"   position="0 58 20" scale="500 500 500" id="mountain"></a-entity>
-
+      <a-plane id="plane" position="0 0 -4" rotation="-90 0 0" width="1000" height="1000" color="#7BC8A4"></a-plane> -->
+      <a-sky id="sky" color="#000"></a-sky>
+      <a-entity id="mountain" gltf-model="#natural-bridge"   position="0 58 20" scale="500 500 500" id="mountain"></a-entity>
+      <!-- <a-mountain id="mountain" color="red" position="0 58 20" scale="500 500 500"></a-mountain> -->
     </a-scene>
   </body>
 </html>
