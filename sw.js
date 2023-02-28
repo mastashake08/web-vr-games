@@ -1,6 +1,6 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "mastashake08-vr-games-offline";
+const CACHE = "mastashake08-vr-games-offline-1";
 const PRECACHE_ASSETS = [
     'https://jyroneparker.s3.amazonaws.com/assets/environment/evolution.mp3',
     'https://jyroneparker.s3.amazonaws.com/assets/environment/natural_bridge.glb',
@@ -10,8 +10,12 @@ importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox
 
 self.addEventListener('install', event => {
     event.waitUntil((async () => {
+      try {
         const cache = await caches.open(CACHE);
         cache.addAll(PRECACHE_ASSETS);
+      } catch(e) {
+        console.log(e)
+      }
     })());
 });
 
