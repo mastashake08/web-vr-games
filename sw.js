@@ -1,12 +1,13 @@
 // This is the "Offline copy of pages" service worker
 
-const CACHE = "mastashake08-vr-games-offline-2";
+const CACHE = "mastashake08-vr-games-offline-3";
 const PRECACHE_ASSETS = [
     'https://jyroneparker.s3.amazonaws.com/assets/environment/evolution.mp3',
     'https://jyroneparker.s3.amazonaws.com/assets/environment/natural_bridge.glb',
-    'https://jyroneparker.s3.amazonaws.com/assets/environment/stranger_star.glb'
-]
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+    'https://jyroneparker.s3.amazonaws.com/assets/environment/stranger_star.glb',
+    '/index.html',
+    'https://aframe.io/releases/1.4.0/aframe.min.js'
+];
 
 self.addEventListener('install', event => {
     event.waitUntil((async () => {
@@ -38,10 +39,3 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
-
-workbox.routing.registerRoute(
-  new RegExp('/*'),
-  new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CACHE
-  })
-);
